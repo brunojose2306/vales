@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#102b50">
+  <title>Dois convites especiais</title>
+  <style>
+    :root{--navy:#102b50;--blue:#244d7d;--sky:#dce9f6;--paper:#fffdf8;--ink:#17304d;--muted:#71839a}
+    *{box-sizing:border-box}
+    body{margin:0;min-height:100vh;color:var(--ink);font-family:Georgia,'Times New Roman',serif;background:radial-gradient(circle at 15% 10%,#e8f1fb 0,transparent 32%),linear-gradient(145deg,#f7faff,#dce8f5);display:flex;justify-content:center;padding:42px 18px}
+    main{width:min(900px,100%);text-align:center}
+    .eyebrow{font:600 11px/1.4 Arial,sans-serif;letter-spacing:.28em;text-transform:uppercase;color:#6883a3}
+    h1{font-size:clamp(34px,6vw,58px);font-weight:400;line-height:1.05;margin:14px 0 10px;color:var(--navy)}
+    .intro{font-size:17px;color:#647b96;margin:0 auto 34px;max-width:500px;line-height:1.6}
+    .tickets{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;text-align:left}
+    .ticket{position:relative;overflow:hidden;background:var(--paper);border:1px solid #c5d5e7;border-radius:5px;padding:25px 25px 23px;box-shadow:0 15px 35px #18395b12}
+    .ticket:before,.ticket:after{content:"";position:absolute;top:50%;width:24px;height:24px;border-radius:50%;background:#e6eef7;transform:translateY(-50%);border:1px solid #c5d5e7}
+    .ticket:before{left:-13px}.ticket:after{right:-13px}
+    .ticket-top{display:flex;justify-content:space-between;align-items:center;border-bottom:1px dashed #b8c9dc;padding-bottom:13px;font:600 10px Arial,sans-serif;letter-spacing:.17em;color:#7890aa;text-transform:uppercase}
+    .ticket-number{font:11px Arial,sans-serif;color:#8aa0b8}
+    .ticket h2{font-size:29px;font-weight:400;color:var(--navy);margin:24px 0 10px}
+    .ticket p{font:14px/1.6 Arial,sans-serif;color:#61758d;margin:0}
+    .ticket-info{margin-top:24px;padding-top:15px;border-top:1px dashed #b8c9dc;font:600 12px/1.8 Arial,sans-serif;letter-spacing:.06em;color:#244d7d}
+    .ticket-info span{display:block;font-weight:400;letter-spacing:0;color:#8091a5}
+    .heart{color:#7899bd;font-size:19px;margin:0 0 5px}
+    .message{margin:42px auto 0;max-width:620px;padding:0 10px}
+    .message .small{font:600 10px Arial,sans-serif;letter-spacing:.24em;text-transform:uppercase;color:#7890aa}
+    .message p{font-size:clamp(21px,3.5vw,29px);line-height:1.5;color:var(--navy);margin:14px 0}
+    .signature{font-style:italic;color:#7188a3;font-size:16px}
+    .music{margin:26px auto 0;display:inline-flex;align-items:center;gap:10px;border:1px solid #a9bfd8;background:#f8fbff;color:#244d7d;border-radius:30px;padding:11px 17px;font:600 12px Arial,sans-serif;cursor:pointer;transition:.2s}
+    .music:hover{background:#e8f1fb;transform:translateY(-1px)}
+    .music:focus-visible{outline:3px solid #8eafd2;outline-offset:3px}
+    footer{margin-top:32px;font:10px Arial,sans-serif;letter-spacing:.15em;color:#91a2b5;text-transform:uppercase}
+    @media(max-width:650px){body{padding:32px 15px}.tickets{grid-template-columns:1fr;gap:16px}.ticket{padding:22px}.intro{margin-bottom:25px}.message{margin-top:32px}}
+  </style>
+</head>
+<body>
+  <main>
+    <div class="eyebrow">Um convite feito com carinho</div>
+    <h1>Dois momentos especiais</h1>
+    <p class="intro">Porque os melhores planos são aqueles que a gente vive junto. Escolha seu convite — os dois são seus. ♡</p>
+
+    <section class="tickets" aria-label="Seus convites">
+      <article class="ticket">
+        <div class="ticket-top"><span>Admit one · jantar</span><span class="ticket-number">Nº 001</span></div>
+        <div class="heart">♡</div>
+        <h2>Uma noite especial</h2>
+        <p>Este vale um jantar gostoso, uma boa conversa e uma noite para guardar na memória.</p>
+        <div class="ticket-info">QUINTA-FEIRA · 19 HORAS<span>Mee Restaurant</span></div>
+      </article>
+
+      <article class="ticket">
+        <div class="ticket-top"><span>Admit one · date</span><span class="ticket-number">Nº 002</span></div>
+        <div class="heart">♡</div>
+        <h2>Um date com você</h2>
+        <p>Um encontro escolhido por você, do jeitinho que tiver vontade. O importante é estarmos juntos.</p>
+        <div class="ticket-info">SEXTA-FEIRA · 18 HORAS<span>Local e date de sua preferência</span></div>
+      </article>
+    </section>
+
+    <section class="message">
+      <div class="small">E uma coisa que eu quero que você saiba</div>
+      <p>Eu te amo. Sou completamente apaixonado por você. E é com você que eu quero construir a minha vida, porque você é a melhor coisa que já me aconteceu.</p>
+      <div class="signature">Com todo o meu carinho. ♡</div>
+    </section>
+
+    <button class="music" id="musicButton" type="button" aria-pressed="false">♫ <span>Ouvir nossa música</span></button>
+    <audio id="backgroundMusic" src="assets/musica.mp3" preload="none" loop></audio>
+    <footer>Feito para tornar um dia comum inesquecível</footer>
+  </main>
+  <script>
+    const audio = document.getElementById('backgroundMusic');
+    const button = document.getElementById('musicButton');
+    const label = button.querySelector('span');
+    button.addEventListener('click', async () => {
+      if (audio.paused) {
+        try { await audio.play(); label.textContent = 'Pausar música'; button.setAttribute('aria-pressed','true'); }
+        catch { label.textContent = 'Adicione o arquivo da música'; }
+      } else {
+        audio.pause(); label.textContent = 'Ouvir nossa música'; button.setAttribute('aria-pressed','false');
+      }
+    });
+    audio.addEventListener('ended', () => { label.textContent = 'Ouvir nossa música'; button.setAttribute('aria-pressed','false'); });
+  </script>
+</body>
+</html>
