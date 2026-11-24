@@ -40,48 +40,41 @@
     <div class="eyebrow">Um convite feito com carinho</div>
     <h1>Dois momentos especiais</h1>
     <p class="intro">Porque os melhores planos são aqueles que a gente vive junto. Escolha seu convite — os dois são seus. ♡</p>
-
     <section class="tickets" aria-label="Seus convites">
       <article class="ticket">
         <div class="ticket-top"><span>Admit one · jantar</span><span class="ticket-number">Nº 001</span></div>
-        <div class="heart">♡</div>
-        <h2>Uma noite especial</h2>
+        <div class="heart">♡</div><h2>Uma noite especial</h2>
         <p>Este vale um jantar gostoso, uma boa conversa e uma noite para guardar na memória.</p>
         <div class="ticket-info">QUINTA-FEIRA · 19 HORAS<span>Mee Restaurant</span></div>
       </article>
-
       <article class="ticket">
         <div class="ticket-top"><span>Admit one · date</span><span class="ticket-number">Nº 002</span></div>
-        <div class="heart">♡</div>
-        <h2>Um date com você</h2>
+        <div class="heart">♡</div><h2>Um date com você</h2>
         <p>Um encontro escolhido por você, do jeitinho que tiver vontade. O importante é estarmos juntos.</p>
         <div class="ticket-info">SEXTA-FEIRA · 18 HORAS<span>Local e date de sua preferência</span></div>
       </article>
     </section>
-
     <section class="message">
       <div class="small">E uma coisa que eu quero que você saiba</div>
       <p>Eu te amo. Sou completamente apaixonado por você. E é com você que eu quero construir a minha vida, porque você é a melhor coisa que já me aconteceu.</p>
       <div class="signature">Com todo o meu carinho. ♡</div>
     </section>
-
     <button class="music" id="musicButton" type="button" aria-pressed="false">♫ <span>Ouvir nossa música</span></button>
-    <audio id="backgroundMusic" src="assets/musica.mp3" preload="none" loop></audio>
+    <audio id="backgroundMusic" src="musica.mp3" preload="none" loop></audio>
     <footer>Feito para tornar um dia comum inesquecível</footer>
   </main>
   <script>
-    const audio = document.getElementById('backgroundMusic');
-    const button = document.getElementById('musicButton');
-    const label = button.querySelector('span');
-    button.addEventListener('click', async () => {
-      if (audio.paused) {
-        try { await audio.play(); label.textContent = 'Pausar música'; button.setAttribute('aria-pressed','true'); }
-        catch { label.textContent = 'Adicione o arquivo da música'; }
-      } else {
-        audio.pause(); label.textContent = 'Ouvir nossa música'; button.setAttribute('aria-pressed','false');
+    const audio=document.getElementById('backgroundMusic');
+    const button=document.getElementById('musicButton');
+    const label=button.querySelector('span');
+    button.addEventListener('click',async()=>{
+      if(audio.paused){
+        try{await audio.play();label.textContent='Pausar música';button.setAttribute('aria-pressed','true');}
+        catch{label.textContent='Não foi possível carregar a música';}
+      }else{
+        audio.pause();label.textContent='Ouvir nossa música';button.setAttribute('aria-pressed','false');
       }
     });
-    audio.addEventListener('ended', () => { label.textContent = 'Ouvir nossa música'; button.setAttribute('aria-pressed','false'); });
   </script>
 </body>
 </html>
